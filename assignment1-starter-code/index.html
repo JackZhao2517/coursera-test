@@ -5,19 +5,38 @@
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
     <title>My CheckLunch App</title>
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+      .color-green {
+        color: green;
+        border-color: green;
+      }
+      .color-red {
+        color: red;
+        border-color: red;
+      }
+      .color-blue {
+        color: blue;
+        border-color: blue;
+      }
+      .none-class {
+        border-color: #ccc;
+      }
+    </style>
   </head>
   <body>
     <h1>My CheckLunch App</h1>
-    <div ng-controller="LunchCheckController">
+    <div ng-controller="LunchCheckController" class="message">
       <input type="text" ng-model ="items">
-        {{sayWarning()}}
+      <p class="{{ customeClass }}">{{sayWarning()}}</p>
       <!-- </br>Inside my input is :{{items}} -->
 
 
       <div>
         <button ng-click="itemCheck()">Check If Too Much</button>
-        <br>
-        {{sayMessage()}}
+         <div class="form-group message" >
+          <p class="{{ customeClass }}">{{sayMessage()}}</p>
+       </div>
         <!-- <br>{{sayHello()}}
         <br>{{sayWarning()}} -->
       </div>

@@ -9,6 +9,7 @@ angular.module('LunchCheck', [])
   $scope.iMessage = "";
   $scope.itemdetail = "";
   $scope.warning = "";
+  $scope.customeClass ="";
 
   $scope.sayWarning = function () {
     return $scope.warning;
@@ -25,6 +26,7 @@ angular.module('LunchCheck', [])
   $scope.itemCheck = function () {
     if ($scope.items == "") {
       $scope.iMessage = "Please enter data first";
+      $scope.customeClass = "color-red";
     } else {
       var tempstring = $scope.items.split(',');
       if( emptyCheck(tempstring) )
@@ -36,6 +38,7 @@ angular.module('LunchCheck', [])
       else {
         $scope.iMessage = "Too much";
       }
+      $scope.customeClass = "color-green";
       $scope.itemdetail = tempstring;
     }
   };
@@ -45,6 +48,7 @@ angular.module('LunchCheck', [])
         $scope.warning =
         "Pls make sure no empty item in your string and your last string is not comma !!";
         $scope.iMessage = "";
+        $scope.customeClass = "color-blue";
         return true;
       }
     }
