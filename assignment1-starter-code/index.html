@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myFirstApp">
+<html ng-app="LunchCheck">
   <head>
     <meta charset="utf-8">
     <script src="angular.min.js"></script>
@@ -8,18 +8,18 @@
   </head>
   <body>
     <h1>My CheckLunch App</h1>
-    <div ng-controller="MyFirstController">
-      {{sayHello()}}
-      <input type="text" ng-model ="name">
-      </br>Inside my input is :{{name}}
-      </br>{{saymessage()}}
+    <div ng-controller="LunchCheckController">
+      <input type="text" ng-model ="items">
+        {{sayWarning()}}
+      <!-- </br>Inside my input is :{{items}} -->
+
 
       <div>
-        <button ng-click="feedYaakov()">Feed Yaakov</button>
-        Cost: {{ cookieCost | currency : "#blah" : 4 }}
+        <button ng-click="itemCheck()">Check If Too Much</button>
         <br>
-
-        <img ng-src="images/yaakov_{{stateOfBeing}}.png">
+        {{sayMessage()}}
+        <!-- <br>{{sayHello()}}
+        <br>{{sayWarning()}} -->
       </div>
 
     </div>

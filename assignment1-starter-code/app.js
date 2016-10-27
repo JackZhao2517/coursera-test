@@ -1,24 +1,56 @@
 (function () {
 'use strict';
 var x = "hello";
-angular.module('myFirstApp', [])
+angular.module('LunchCheck', [])
 
-.controller('MyFirstController', function ($scope ) {
-  $scope.name = "Jack zhao";
-  $scope.stateOfBeing = "hungry";
-  $scope.cookieCost = .45;
-  
+.controller('LunchCheckController', function ($scope ) {
+  $scope.items = "";
+  $scope.ifMore = false;
+  $scope.iMessage = "";
+  $scope.itemdetail = "";
+  $scope.warning = "";
+
+  $scope.sayWarning = function () {
+    return $scope.warning;
+  };
+
   $scope.sayHello = function () {
-    return "Hello My Coursera page!!" ;
+    return $scope.itemdetail[2];
   };
 
-  $scope.saymessage = function() {
-    return "I am trying to learn AngularJS!!";
+  $scope.sayMessage = function() {
+        return $scope.iMessage;
   };
 
-  $scope.feedYaakov = function () {
-    $scope.stateOfBeing = "fed";
+  $scope.itemCheck = function () {
+    if ($scope.items == "") {
+      $scope.iMessage = "Please enter data first";
+    } else {
+      var tempstring = $scope.items.split(',');
+      if( emptyCheck(tempstring) )
+        return;
+      if(tempstring.length  <= 3)
+      {
+        $scope.iMessage = "Enjoy";
+      }
+      else {
+        $scope.iMessage = "Too much";
+      }
+      $scope.itemdetail = tempstring;
+    }
   };
+  function emptyCheck(string) {
+    for (var i = 0; i < string.length; i++) {
+      if (string[i] == "") {
+        $scope.warning =
+        "Pls make sure no empty item in your string and your last string is not comma !!";
+        $scope.iMessage = "";
+        return true;
+      }
+    }
+    $scope.warning = "";
+    return false;
+  }
 
 });
 
