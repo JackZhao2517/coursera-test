@@ -27,15 +27,18 @@
   <body>
     <h1>My CheckLunch App</h1>
     <div ng-controller="LunchCheckController" class="message">
-      <input type="text" ng-model ="items">
-      <p class="{{ customeClass }}">{{sayWarning()}}</p>
+      <input type="text" ng-model ="items" ng-keyup="nullCheck()" placeholder="list comma separated dishes you usually have for lunch">
+      <!-- <p class="{{ customeClass }}">{{sayWarning()}}</p> -->
       <!-- </br>Inside my input is :{{items}} -->
+      <label ng-show="nullWarning" class="control-label">
+                Null values will not be counted.
+      </label>
 
 
       <div>
         <button ng-click="itemCheck()">Check If Too Much</button>
          <div class="form-group message" >
-          <p class="{{ customeClass }}">{{sayMessage()}}</p>
+          <p class="{{ customeClass }}">{{iMessage}}</p>
        </div>
         <!-- <br>{{sayHello()}}
         <br>{{sayWarning()}} -->

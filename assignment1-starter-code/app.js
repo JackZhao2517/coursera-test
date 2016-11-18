@@ -10,7 +10,9 @@ angular.module('LunchCheck', [])
   $scope.itemdetail = "";
   $scope.warning = "";
   $scope.customeClass ="";
-
+  $scope.nullCheck = function () {
+         $scope.nullWarning = /,\s*,/.test($scope.items);
+     };
   $scope.sayWarning = function () {
     return $scope.warning;
   };
@@ -29,6 +31,14 @@ angular.module('LunchCheck', [])
       $scope.customeClass = "color-red";
     } else {
       var tempstring = $scope.items.split(',');
+
+      // Discard null values
+      tempstring = tempstring.filter(function (x) { return x != '' });
+
+      // Clean up the input field
+       $scope.items = tempstring.join(',');
+       $scope.nullCheck();
+
       if( emptyCheck(tempstring) )
         return;
       if(tempstring.length  <= 3)
