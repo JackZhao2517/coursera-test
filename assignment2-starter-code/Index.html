@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" ng-app="ShoppingListCheckOff">
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .emptyMessage {
+        font-weight: bold;
+        color: red;
+        font-size: 1.2em;
+      }
+      li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+    </style>
+  </head>
+<body>
+  <div class="container">
+  <h1>Shopping List Check Off</h1>
+
+  <div class="row">
+
+    <!-- To Buy List -->
+    <div class="col-md-6">
+     <h2>To Buy:</h2>
+     <div ng-controller='ToBuyController as toBuyShowList'>
+       <ol>
+         <li ng-repeat="item in toBuyShowList.items">
+           Buy {{ item.quantity }} {{ item.name }}
+           <!-- <button ng-click="toBuyShowList.removeItem($index);">Remove Item</button> -->
+           <button ng-click="toBuyShowList.removeItem($index);" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+         </li>
+       </ol>
+
+        <div ng-show="toBuyShowList.errorMessage" class="error emptyMessage">Error: {{toBuyShowList.errorMessage}}</div>
+     </div>
+
+    </div>
+
+    <!-- Already Bought List -->
+    <div class="col-md-6">
+     <h2>Already Bought:</h2>
+     <div ng-controller='AlreadyBoughtController as boughtShowList'>
+       <ol>
+         <li ng-repeat="item in boughtShowList.items">
+           Bought  {{ item.quantity }} {{ item.name }}
+         </li>
+       </ol>
+       <!-- <div ng-show="boughtShowList.errorMessage" class="error emptyMessage">Error: {{boughtShowList.errorMessage}}</div> -->
+       <div class="emptyMessage" ng-show="boughtShowList.items.length==0">Nothing bought yet.</div>
+     </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

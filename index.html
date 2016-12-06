@@ -9,7 +9,11 @@
   <body>
     <h1>My first angularJS page</h1>
     <div ng-controller="MyFirstController">
-      {{sayHello()}}
+      Original: {{sayMessage()}} <br>
+      Loves: {{ sayLovesMessage() }} <br>
+      Truth: {{ sayLovesMessage() | truth : 'healthy' : 'cookie' }} <br>
+      BIG TRUTH: {{ sayLovesMessage() | truth : 'healthy' : 'cookie' | uppercase }}
+      <br>
       <input type="text" ng-model ="name">
       </br>Inside my input is :{{name}}
       </br>{{saymessage()}}
@@ -18,8 +22,23 @@
         <button ng-click="feedYaakov()">Feed Yaakov</button>
         Cost: {{ cookieCost | currency : "#blah" : 4 }}
         <br>
+<br>
+<br>
+        <!-- <img ng-src="images/yaakov_{{stateOfBeing}}.png"> -->
+      </div>
 
-        <img ng-src="images/yaakov_{{stateOfBeing}}.png">
+      <div>
+        <button ng-click="showNumberOfWatchers()">
+          Log # of Watchers</button>
+      </div>
+
+      <div>
+        <button ng-click="countOnce()">Up Once Counter (once)</button>
+        <button ng-click="upCounter()">Increment Counter</button>
+      </div>
+      <div>
+        Once counter: {{ onceCounter }} <br>
+        Regular counter: {{ counter }}
       </div>
 
     </div>
