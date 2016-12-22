@@ -1,0 +1,9 @@
+<div>
+  <ul>
+      <li ng-repeat="item in menu.items">
+        <button ng-click="menu.onRemove({index: $index});">Remove Item</button>
+        ({{ item.short_name }}) {{ item.description }}
+      </li>
+  </ul>
+</div>
+<span class="error ng-scope" ng-if="menu.errorHandler()">WARNING! Nothing Found</span>
